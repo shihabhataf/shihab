@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta property="og:title" content="شهاب هتف">
+    <meta property="og:description" content="نطمح لأن نكون المصدر الأول للمعلومات الموثوقة والمحتوى المتميز في العالم العربي. نهدف إلى تقديم مقالات تغطي أحدث التطورات والأفكار في مختلف المجالات.">
+    <meta property="og:image" content="https://shihabhataf.rf.gd/logo.jpg">
+    <meta property="og:url" content="https://shihabhataf.rf.gd">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="موقع شهاب هتف">
+    <meta name="twitter:description" content="نطمح لأن نكون المصدر الأول للمعلومات الموثوقة والمحتوى المتميز في العالم العربي. نهدف إلى تقديم مقالات تغطي أحدث التطورات والأفكار في مختلف المجالات.">
+    <meta name="twitter:image" content="https://shihabhataf.rf.gd/logo.jpg">
+    <meta name="theme-color" content="#873F00">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع شهاب هتف</title>
+    <meta name="description" content="موقع شهاب هتف هو وجهتك الرقمية للاستكشاف والاطلاع على مقالات متنوعة تغطي مجموعة واسعة من المواضيع. نقدم لك محتوى متميز ومبتكر في مجالات متعددة مثل الأدب، الثقافة، التكنولوجيا، والعلوم، مما يجعلك دائماً على اطلاع بأحدث المعلومات وأعمق الأفكار. انضم إلينا في رحلة فكرية ممتعة، واستمتع بقراءة مقالات تتنوع بين التحليلات الدقيقة والرؤى الإبداعية.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/logo.jpg">
+    <style>
+        hr {
+            border-color: #873F00;
+        }
+
+        input {
+            height: 30px;
+        }
+
+        #resultsCount {
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        #searchResults {
+            padding: 50px 0 0 0;
+        }
+
+        .search-item .eq {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: box-shadow 0.2s;
+        }
+
+        .search-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-item div img {
+            width: 30% !important;
+            /* حجم الصورة */
+            height: auto;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .search-item h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #007bff;
+        }
+
+        .search-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .pagination-controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pagination-controls button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination-controls button:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination-controls span {
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .search-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .img {
+                margin-bottom: 10px;
+                width: 80%;
+                /* حجم الصورة عند الشاشات الصغيرة */
+            }
+        }
+        .navbar{
+        height: 60px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark">
+        <a href="index.html"><div class="item logo">
+            <img src="img/logo.png" alt="logo">
+        </div></a>
+        <div class="item search">
+            <input type="text" id="searchInput" placeholder="البحث في المقالات" focus>
+            <button id="searchButton"><i class="fa-solid fa-magnifying-glass fa-fw"></i></button>
+        </div>
+        <ul id="mySidebar" class="sidebar">
+
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background-color: #87460D; height: 8vh;display: flex;justify-content: space-between;width: 100%;color: #fff ;padding: 7px 20px;"><img src="img/logo.jpg" alt="logo" style="border-radius: 50%;color: black ;height: 3rem;width: 3rem;padding: 5px;">
+                <h3 style="font-size: 1rem;margin: auto 0;">شهاب هتف</h3> »
+            </a>
+            <li onclick="closeNav()"><a href="#"><i class="fa-solid fa-house"></i>الرئيسية</a></li>
+            <li onclick="closeNav()"><a href="#mqalat"><i class="fa-solid fa-newspaper"></i>المقالات</a></li>
+            <li onclick="closeNav()"><a href="#about"><i class="fa-solid fa-circle-exclamation"></i>حول الموقع</a></li>
+            <li onclick="closeNav()"><a href="#contact"><i class="fa-solid fa-comment"></i>اترك تعليقا</a></li>
+            <li onclick="closeNav()"><a href="https://scontent.whatsapp.net/v/t61.25591-34/10000000_1885887068592684_4396487508637345455_n.apk/WhatsApp.apk?ccb=1-7&_nc_sid=c49adc&_nc_ohc=vlg0lxJlBpcQ7kNvgFPD2Lr&_nc_ht=scontent.whatsapp.net&_nc_gid=AOJspz4KyAQPj2e2wIfubUE&oh=01_Q5AaIDhERO2tg4jo7SXzZM19Prf6kYXyhyuO7Vzq7TGPJbjL&oe=66F5167A"><i class="fa-solid fa-download"></i>تنزيل تطبيق واتساب</a></li>
+        </ul>
+        <div style="color: black ;font-size: 1.7rem;padding: 0 0 0;" class="navbar-toggler" type="button" onclick="openNav()" class="open">
+            <i style="color: #fff;" class="fa-solid fa-bars"></i>
+        </div>
+        <ul id="Sidebar" class="sidebar">
+            <li><a href="#"><i class="fa-solid fa-house"></i>الرئيسية</a></li>
+            <li><a href="#mqalat"><i class="fa-solid fa-newspaper"></i>المقالات</a></li>
+            <li><a href="#about"><i class="fa-solid fa-circle-exclamation"></i>حول الموقع</a></li>
+            <li><a href="#contact"><i class="fa-solid fa-comment"></i>اترك تعليقا</a></li>
+
+        </ul>
+    </nav>
+
+    <section class="wc content-element">
+        <div class="wc-n">
+            <h1>
+                <br>
+                <p class="p1">اهلا بكم في موقع</p><span>شهاب هتف </span>
+            </h1>
+        </div>
+        <img src="img/Edit.ico" alt="hoh">
+    </section>
+    <section class="content-element" id="mqalat">
+        <h3 class="h3">
+            <hr>
+            <span>ابرز المقالات</span>
+            <hr>
+        </h3>
+        <main class="articles content-element">
+            <a class="image-container" href="adb/adb1.html">
+                <img class="img" src="img/sh.jpg" alt="صورة المقال" onerror="this.src='https://via.placeholder.com/800x400';">
+                <div class="gradient-overlay"></div>
+                <h3 style="text-align: center;">دع الايام تفعل ما تشاء</h3>
+            </a>
+            <a class="image-container" href="news/news1.html">
+                <img class="img" src="img/news1.jpg" alt="صورة المقال" onerror="this.src='https://via.placeholder.com/800x400';">
+                <div class="gradient-overlay"></div>
+                <h3 style="text-align: center;">امطار غزيرة في اليمن</h3>
+            </a> 
+            <a class="image-container" href="reyath/reyath1.html">
+                <img class="img" src="img/r1.jpg" alt="صورة المقال" onerror="this.src='https://via.placeholder.com/800x400';">
+                <div class="gradient-overlay"></div>
+                <h3 style="text-align: center;">الالعاب الاولمبية</h3>
+            </a>
+            <a class="image-container" href="tecno/tecno3.html">
+                <img class="img" src="img/واتساب1.jpg" alt="صورة المقال">
+                <div class="gradient-overlay"></div>
+                <h3 style="text-align: center;">تنزيل واتساب الرسمي</h3>
+            </a>
+            <a class="image-container" href="shakh/shakh1.html">
+                <img class="img" src="img/هنية.jpg" alt="صورة المقال" onerror="this.src='https://via.placeholder.com/800x400';">
+                <div class="gradient-overlay"></div>
+                <h3 style="text-align: center;">اسماعيل هنية</h3>
+            </a>
+            <a class="image-container" href="boldan/boldan3.html">
+                <img class="img" src="img/فلسطين1.jpg" alt="صورة المقال" onerror="this.src='https://via.placeholder.com/800x400';">
+                <div class="gradient-overlay"></div>
+                <h3 style="text-align: center;">فلسطين</h3>
+            </a>
+        </main>
+        <h3 class="h3 content-element">
+            <hr>
+            <span>تصنيفات المقالات</span>
+            <hr>
+        </h3>
+        <main class="mqalat content-element">
+            <div class="mqal">
+                <a href="boldan/boldan.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-earth"></i>
+                        <h2 style="text-align: center;">بلدان حول العالم</h2>
+                    </div>
+                    <hr>
+                    <li><a href="boldan/boldan3.html">فلسطين</a></li>
+                    <li><a href="boldan/boldan1.html">اليمن</a></li>
+                    <li><a href="boldan/boldan4.html">العراق</a></li>
+                    <li><a href="boldan/boldan2.html">جزر سليمان</a></li>
+                </a>
+            </div>
+            <div class="mqal content-element">
+                <a href="tecno/tecno.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h2 style="text-align: center;">تكنولوجيا</h2>
+                    </div>
+                    <hr>
+                    <li><a href="tecno/tecno1.html">افضل 10 ادوات ذكاء اصطناعي</a></li>
+                </a>
+            </div>
+            <div class="mqal content-element">
+                <a href="reyath/reyath.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-futbol"></i>
+                        <h2 style="text-align: center;">عن الرياضة</h2>
+                    </div>
+                    <hr>
+                    <li><a href="reyath/reyath1.html">اولمبيا 2024</a></li>
+                </a>
+            </div>
+            <div class="mqal content-element">
+                <a href="adb/adb.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-feather"></i>
+                        <h2 style="text-align: center;">ادب و شعر</h2>
+                    </div>
+                    <hr>
+                    <li><a href="adb/adb1.html">قصيدة دع الايام تفعل ما تشاء</a></li>
+                    <li><a href="adb/adb2.html">قصيدة بيان عسكري 1</a></li>
+                    <li><a href="adb/adb3.html">قصيدة يا مدرك الثارات ادرك ثارنا</a></li>
+                </a>
+            </div>
+            <div class="mqal">
+                <a href="shakh/shakh.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-user-ninja"></i>
+                        <h2 style="text-align: center;">شخصيات بارزة</h2>
+                    </div>
+                    <hr>
+                    <li><a href="shakh/shakh1.html">اسماعيل هنية</a></li>
+                    <li><a href="shakh/shakh2.html">صدام حسين</a></li>
+                </a>
+            </div>
+            <div class="mqal">
+                <a href="eslam/eslam.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-moon"></i>
+                        <h2 style="text-align: center;">إسلامية</h2>
+                    </div>
+                    <hr>
+                    <li><a href="#">لا يوجد مقالات بعد</a></li>
+                </a>
+            </div>
+            <div class="mqal">
+                <a href="news/news.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-radio"></i>
+                        <h2 style="text-align: center;">إخبارية</h2>
+                    </div>
+                    <hr>
+                    <li><a href="news/news1.html">امطار غزيرة في اليمن</a></li>
+                </a>
+            </div>
+            <div class="mqal">
+                <a href="elm/elm.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-microscope"></i>
+                        <h2 style="text-align: center;">علمية و طبية</h2>
+                    </div>
+                    <hr>
+                    <li><a href="#">لا يوجد مقالات بعد</a></li>
+                </a>
+            </div>
+            <div class="mqal">
+                <a href="motnao/motnao.html">
+                    <div class="mqalaty">
+                        <i class="fa-solid fa-dice"></i>
+                        <h2 style="text-align: center;">متنوّعة</h2>
+                    </div>
+                    <hr>
+                    <li><a href="#">لا يوجد مقالات بعد</a></li>
+                </a>
+            </div>
+        </main>
+    </section>
+    <section class="a-ed content-element">
+
+        <h3 class="h3">
+            <hr>
+            <span>أبرز الكُتّاب</span>
+            <hr>
+        </h3>
+        <a href="ed/ed1.html">
+            <div class="hoq">
+                <div class="btn" href="#">« </div>
+                <div dir="ltr" class="ed-info">
+                    <h3>SHIHAB HATAF</h3>
+                    <div class="links-ed">
+                        <a href="#">
+                            <i class="fa-brands fa-square-whatsapp"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-square-facebook"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-square-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-square-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <img src="img/ed1.jpg">
+            </div>
+        </a>
+
+    </section>
+    <section class="content-element" id="about">
+        <h3>نبذه عن الموقع</h3>
+        <div class="about-c">
+            <p>
+            <div>
+                مرحبًا بكم في شهاب هتف ، وجهتكم الأولى للحصول على مقالات متميزة في مجالات متنوعة. نسعى لتقديم محتوى غني ومفيد يلبي اهتمامات قرائنا ويثري معرفتهم.
+            </div>
+            <br>
+            <br>
+            <div>
+                <br>
+                رؤيتنا
+                <br>
+                نطمح لأن نكون المصدر الأول للمعلومات الموثوقة والمحتوى المتميز في العالم العربي. نهدف إلى تقديم مقالات تغطي أحدث التطورات والأفكار في مختلف المجالات.
+            </div>
+            <br>
+            <br>
+            <div>
+                <br>
+                رسالتنا
+                <br>
+
+                نلتزم بتقديم محتوى عالي الجودة يساهم في نشر المعرفة وزيادة الوعي. نعمل بجد لتوفير مقالات دقيقة ومفيدة تلبي احتياجات قرائنا وتساعدهم في تحقيق أهدافهم.
+            </div>
+            <br>
+            <br>
+            <div>
+                <br>
+                تواصل معنا
+                <br>
+                نحن هنا للإجابة على أي استفسارات أو تقديم الدعم اللازم. يمكنك التواصل معنا عبر البريد الإلكتروني "shihab.hataf@hotmail.com" <br> أو عبر وسائل التواصل الاجتماعي
+                <div class="icons">
+                    <a href="https://www.facebook.com/profile.php?id=61564007595878"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://t.me/fada_almkalat"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://whatsapp.com/channel/0029VagD2T560eBle97Vh537"><i class="fa-brands fa-square-whatsapp"></i></a>
+                </div>
+            </div>
+            </p>
+            <img src="img/notepad.ico" alt="kgigikujj">
+        </div>
+    </section>
+    <section class=" content-element" id="contact">
+        <h2>اترك تعليقا</h2>
+        <form id="contactForm" action="https://formspree.io/f/mqazevdk" method="POST">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+            <label for="email">البريد الإلكتروني:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+            <label for="message">رسالة:</label>
+            <textarea id="message" name="message" class="form-control" required></textarea>
+            <button class="btn" type="submit">إرسال</button>
+        </form>
+    </section>
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2024 <br>لصالح موقع شهاب هتف</p>
+        <div class="icons">
+            <a href="https://www.facebook.com/profile.php?id=61564007595878"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://t.me/fada_almkalat"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://whatsapp.com/channel/0029VagD2T560eBle97Vh537"><i class="fa-brands fa-square-whatsapp"></i></a>
+        </div>
+    </footer>
+    <main>
+        <div style="display: none; " id="articlesContainer1"></div>
+        <div style="display: none; " id="articlesContainer2"></div>
+        <div style="display: none; " id="articlesContainer3"></div>
+        <div style="display: none; " id="articlesContainer4"></div>
+        <div style="display: none; " id="articlesContainer5"></div>
+        <div style="display: none; " id="articlesContainer6"></div>
+        <div style="display: none; " id="articlesContainer7"></div>
+        <div style="display: none; " id="articlesContainer8"></div>
+
+    </main>
+   <script>
+       document.getElementById('searchButton').addEventListener('click', function() {
+           const searchInput = document.getElementById('searchInput').value;
+           if (searchInput.trim() !== '') {
+               window.location.href = `search.html?query=${encodeURIComponent(searchInput)}`;
+           }
+       });
+   </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
